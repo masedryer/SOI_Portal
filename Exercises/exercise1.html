@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 1</title>
+  </head>
+
+  <body>
+    <form id="myForm">
+      <!-- Two text fields - Name and Email -->
+      <input id="name" type="text" placeholder="Name" value="" /><br /><br />
+      <input id="email" type="email" placeholder="Email" value="" /><br /><br />
+      <!-- Two radio buttons for Gender - Male and Female -->
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="Male" />
+      <label for="female">Female</label>
+      <input
+        type="radio"
+        id="female"
+        name="gender"
+        value="Female"
+      /><br /><br />
+      <!-- Submit button -->
+      <input type="button" value="Submit" onclick="displayFormData()" />
+    </form>
+
+    <!-- Display form data -->
+    <div id="formDataDisplay"></div>
+
+    <script>
+      function displayFormData() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+
+        var formDataDisplay = document.getElementById("formDataDisplay");
+        formDataDisplay.innerHTML = "<h2>Form Data:</h2>";
+        formDataDisplay.innerHTML +=
+          "<p><strong>Name:</strong> " + name + "</p>";
+        formDataDisplay.innerHTML +=
+          "<p><strong>Email:</strong> " + email + "</p>";
+        formDataDisplay.innerHTML +=
+          "<p><strong>Gender:</strong> " +
+          (gender ? gender.value : "Not selected") +
+          "</p>";
+      }
+    </script>
+  </body>
+</html>

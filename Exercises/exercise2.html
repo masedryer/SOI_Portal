@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+
+  <body>
+    <form id="myForm">
+      <!-- Two text fields - Name and Email -->
+      <input id="name" type="text" placeholder="Name" value="" /><br /><br />
+      <input id="email" type="email" placeholder="Email" value="" /><br /><br />
+      <!-- Two radio buttons for Gender - Male and Female -->
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="Male" />
+      <label for="female">Female</label>
+      <input
+        type="radio"
+        id="female"
+        name="gender"
+        value="Female"
+      /><br /><br />
+      <!-- Submit button -->
+      <input type="button" value="Submit" onclick="displayFormData()" />
+    </form>
+
+    <!-- Display form data -->
+    <div id="formDataDisplay" style="display: none"></div>
+
+    <script>
+      function displayFormData() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+
+        var formDataDisplay = $("#formDataDisplay");
+        formDataDisplay.html("<h2>Form Data:</h2>");
+        formDataDisplay.append("<p><strong>Name:</strong> " + name + "</p>");
+        formDataDisplay.append("<p><strong>Email:</strong> " + email + "</p>");
+        formDataDisplay.append(
+          "<p><strong>Gender:</strong> " +
+            (gender ? gender.value : "Not selected") +
+            "</p>"
+        );
+
+        formDataDisplay.css({
+          "font-family": "Arial",
+          border: "2px solid #000",
+          "background-color": "#BEFD73",
+          padding: "10px",
+        });
+
+        formDataDisplay.fadeIn(1000).mouseover(function () {
+          $(this).slideUp();
+        });
+      }
+    </script>
+  </body>
+</html>
